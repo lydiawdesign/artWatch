@@ -1,139 +1,176 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { User, Art, Category } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
-    { name: 'Food' },
-    { name: 'Household Supplies' },
-    { name: 'Electronics' },
-    { name: 'Books' },
-    { name: 'Toys' }
+    { name: 'Acrylic' },
+    { name: 'Mixed Media' },
+    { name: 'Watercolor' },
+    { name: 'Ink' },
+    { name: 'Other' }
   ]);
 
   console.log('categories seeded');
 
-  await Product.deleteMany();
+  await Art.deleteMany();
 
-  const products = await Product.insertMany([
+  const products = await Art.insertMany([
     {
-      name: 'Tin of Cookies',
+      name: 'Azaman 1',
       description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
+        '36in x 40in mixed media on framed canvas board',
+      image: 'Azaman1.jpg',
+      category: categories[1]._id,
+      startBid: 300
+    },
+    {
+      name: 'Azaman 2',
+      description:
+        '26in x 30in mixed media on framed canvas board',
+      image: 'Azaman2.jpg',
+      category: categories[1]._id,
+      startBid: 120
+    },
+    {
+      name: 'Faces of Morocco',
       category: categories[0]._id,
-      price: 2.99,
-      quantity: 500
+      description:
+        '26in x 20in acrylic on stretched cotton canvas, 6 part mini series',
+      image: 'FacesofMorocco.jpg',
+      startBid: 400
     },
     {
-      name: 'Canned Coffee',
+      name: 'Money & Maturity',
+      category: categories[4]._id,
       description:
-        'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-      image: 'canned-coffee.jpg',
+        '8in x 10in collage on paper framed',
+      image: 'MoneyMaturity.jpg',
+      startBid: 40
+    },
+    {
+      name: 'Noodle Girl OG',
       category: categories[0]._id,
-      price: 1.99,
-      quantity: 500
-    },
-    {
-      name: 'Toilet Paper',
-      category: categories[1]._id,
       description:
-        'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
-      image: 'toilet-paper.jpg',
-      price: 7.99,
-      quantity: 20
+        '8in x 10in acrylic on stretched canvas',
+      image: 'NoodleGirlArms.jpg',
+      startBid: 40
     },
     {
-      name: 'Handmade Soap',
-      category: categories[1]._id,
+      name: 'Noodle Girls 1',
+      category: categories[0]._id,
       description:
-        'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felis, et fringilla sapien turpis vestibulum nisl.',
-      image: 'soap.jpg',
-      price: 3.99,
-      quantity: 50
+        '20in x 30in acrylic on stretched canvas',
+      image: 'NoodleGirls1.jpg',
+      startBid: 100
     },
     {
-      name: 'Set of Wooden Spoons',
-      category: categories[1]._id,
+      name: 'Noodle Girls 2',
+      category: categories[0]._id,
       description:
-        'Vivamus ut turpis in purus pretium mollis. Donec turpis odio, semper vel interdum ut, vulputate at ex. Duis dignissim nisi vel tortor imperdiet finibus. Aenean aliquam sagittis rutrum.',
-      image: 'wooden-spoons.jpg',
-      price: 14.99,
-      quantity: 100
+        '26in x 20in acrylic on stretched canvas',
+      image: 'NoodleGirls2.jpg',
+      startBid: 100
     },
     {
-      name: 'Camera',
-      category: categories[2]._id,
-      description:
-        'Vestibulum risus metus, luctus non tortor quis, tincidunt consectetur ex. Nullam vitae lobortis ligula, ut sagittis massa. Curabitur consectetur, tellus at pulvinar venenatis, erat augue cursus erat, eu ullamcorper eros lectus ultrices ipsum. Integer rutrum, augue vitae auctor venenatis, turpis turpis elementum orci, at sagittis risus mi a leo.',
-      image: 'camera.jpg',
-      price: 399.99,
-      quantity: 30
-    },
-    {
-      name: 'Tablet',
-      category: categories[2]._id,
-      description:
-        'In sodales, ipsum quis ultricies porttitor, tellus urna aliquam arcu, eget venenatis purus ligula ut nisi. Fusce ut felis dolor. Mauris justo ante, aliquet non tempus in, tempus ac lorem. Aliquam lacinia dolor eu sem eleifend ultrices. Etiam mattis metus metus. Sed ligula dui, placerat non turpis vitae, suscipit volutpat elit. Phasellus sagittis, diam elementum suscipit fringilla, libero mauris scelerisque ex, ac interdum diam erat non sapien.',
-      image: 'tablet.jpg',
-      price: 199.99,
-      quantity: 30
-    },
-    {
-      name: 'Tales at Bedtime',
+      name: 'Noodle Girls 3',
       category: categories[3]._id,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.',
-      image: 'bedtime-book.jpg',
-      price: 9.99,
-      quantity: 100
+        '8in x 10in alcohol ink on paper framed',
+      image: 'NoodleGirls3.jpg',
+      startBid: 40
     },
     {
-      name: 'Spinning Top',
-      category: categories[4]._id,
-      description: 'Ut vulputate hendrerit nibh, a placerat elit cursus interdum.',
-      image: 'spinning-top.jpg',
-      price: 1.99,
-      quantity: 1000
+      name: 'Noodle Girls 4',
+      category: categories[3]._id,
+      description: 
+        '8in x 10in alcohol ink on paper framed',
+      image: 'NoodleGirls4.jpg',
+      startBid: 40
     },
     {
-      name: 'Set of Plastic Horses',
-      category: categories[4]._id,
+      name: 'Noodle Girls 5',
+      category: categories[3]._id,
       description:
-        'Sed a mauris condimentum, elementum enim in, rhoncus dui. Phasellus lobortis leo odio, sit amet pharetra turpis porta quis.',
-      image: 'plastic-horses.jpg',
-      price: 2.99,
-      quantity: 1000
+        '8in x 10in alcohol ink on paper framed',
+      image: 'NoodleGirls5.jpg',
+      startBid: 40
     },
     {
-      name: 'Teddy Bear',
-      category: categories[4]._id,
+      name: 'Noodle Girls 6',
+      category: categories[0]._id,
       description:
-        'Vestibulum et erat finibus erat suscipit vulputate sed vitae dui. Ut laoreet tellus sit amet justo bibendum ultrices. Donec vitae felis vestibulum, congue augue eu, finibus turpis.',
-      image: 'teddy-bear.jpg',
-      price: 7.99,
-      quantity: 100
+        '20in x 26in acrylic on framed stretched canvas',
+      image: 'NoodleGirls6.jpg',
+      startBid: 150
     },
     {
-      name: 'Alphabet Blocks',
-      category: categories[4]._id,
+      name: 'Noodle Girls 7',
+      category: categories[0]._id,
       description:
-        'Morbi consectetur viverra urna, eu fringilla turpis faucibus sit amet. Suspendisse potenti. Donec at dui ac sapien eleifend hendrerit vel sit amet lectus.',
-      image: 'alphabet-blocks.jpg',
-      price: 9.99,
-      quantity: 600
+        '12in x 12in acrylic on stretched canvas',
+      image: 'NoodleGirls7.jpg',
+      startBid: 100
+    },
+    {
+      name: 'Noodle Girls 8',
+      category: categories[0]._id,
+      description:
+        '20in x 26in acrylic on framed stretched canvas',
+      image: 'NoodleGirls8.jpg',
+      startBid: 150
+    },
+    {
+      name: 'Noodle Heads',
+      category: categories[0]._id,
+      description:
+        '30in x 40in acrylic on stretched canvas',
+      image: 'NoodleHeadMosaics.jpg',
+      startBid: 300
+    },
+    {
+      name: 'The Blue City 1',
+      category: categories[0]._id,
+      description:
+        'acrylic on framed stretched canvas',
+      image: 'TheBlueCity.jpg',
+      startBid: 150
+    },
+    {
+      name: 'The Blue City 2',
+      category: categories[0]._id,
+      description:
+        'acrylic on framed stretched canvas',
+      image: 'TheBlueCity2.jpg',
+      startBid: 100
+    },
+    {
+      name: 'Of Two Minds 1',
+      category: categories[2]._id,
+      description:
+        '8in x 10in watercolor on paper',
+      image: 'OfTwoMinds1.jpg',
+      startBid: 50
+    },
+    {
+      name: 'Of Two Minds 2',
+      category: categories[2]._id,
+      description:
+        '8in x 10in watercolor on paper',
+      image: 'OfTwoMinds2.jpg',
+      startBid: 50
     }
   ]);
 
-  console.log('products seeded');
+  console.log('art products seeded');
 
   await User.deleteMany();
 
   await User.create({
-    firstName: 'Pamela',
-    lastName: 'Washington',
-    email: 'pamela@testmail.com',
+    firstName: 'Lydia',
+    lastName: 'Williamson',
+    email: 'lydia@gmail.com',
     password: 'password12345',
     orders: [
       {
@@ -143,9 +180,9 @@ db.once('open', async () => {
   });
 
   await User.create({
-    firstName: 'Elijah',
-    lastName: 'Holt',
-    email: 'eholt@testmail.com',
+    firstName: 'Sheri',
+    lastName: 'Foster',
+    email: 'Sheri@testmail.com',
     password: 'password12345'
   });
 
