@@ -15,7 +15,7 @@ const typeDefs = gql`
     category: Category
     price: Float
     maxBidder: ID
-    expiration: Date
+    expiration: String
     sold: Boolean
   }
 
@@ -24,6 +24,11 @@ const typeDefs = gql`
     purchaseDate: String
     products: [Art]
   }
+  type Watchlist {
+    _id: ID
+    artPieces: [Art]
+  }
+
 
   type User {
     _id: ID
