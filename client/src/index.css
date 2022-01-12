@@ -1,12 +1,13 @@
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
+  --primary: #283d3b;
+  --secondary: #9ef01a;
+  --tertiary: #197278;
   --light: #fafafa;
   --dark: #272f32;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
+  --accent-font: 'Righteous', cursive;
 }
 
 * {
@@ -21,11 +22,12 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
   color: var(--dark);
+
 }
 
 h1,
