@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import WatchList from '../components/WatchList';
+import Watchlist from '../components/Watchlist';
 import { useStoreContext } from '../utils/GlobalState';
 import {
   REMOVE_FROM_WATCHLIST,
@@ -51,39 +51,39 @@ function Detail() {
     }
   }, [products, data, loading, dispatch, id]);
 
-  const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === id);
-    if (itemInCart) {
+  const addToWatchlist = () => {
+    const itemInWatchlist = watchlist.find((watchlistItem) => watchlistItem._id === id);
+    if (itemInWatchlist) {
       dispatch({
         type: UPDATE_WATCHLIST_QUANTITY,
         _id: id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        purchaseQuantity: parseInt(itemInWatchlist.purchaseQuantity) + 1,
       });
-      idbPromise('cart', 'put', {
-        ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      idbPromise('watchlist', 'put', {
+        ...itemInWatchlist,
+        purchaseQuantity: parseInt(itemInWatchlist.purchaseQuantity) + 1,
       });
     } else {
       dispatch({
         type: ADD_TO_WATCHLIST,
         product: { ...currentProduct, purchaseQuantity: 1 },
       });
-      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise('watchlist', 'put', { ...currentProduct, purchaseQuantity: 1 });
     }
   };
 
-  const removeFromCart = () => {
+  const removeFromWatchlist = () => {
     dispatch({
       type: REMOVE_FROM_WATCHLIST,
       _id: currentProduct._id,
     });
 
-    idbPromise('cart', 'delete', { ...currentProduct });
+    idbPromise('watchlist', 'delete', { ...currentProduct });
   };
 
   return (
     <>
-      {currentProduct && cart ? (
+      {currentProduct && watchlist ? (
         <div className="container my-1">
           <Link to="/">← Back to Products</Link>
 
@@ -93,12 +93,12 @@ function Detail() {
 
           <p>
             <strong>Price:</strong>${currentProduct.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
+            <button onClick={addToWatchlist}>Add to Watchlist</button>
             <button
-              disabled={!cart.find((p) => p._id === currentProduct._id)}
-              onClick={removeFromCart}
+              disabled={!watchlist.find((p) => p._id === currentProduct._id)}
+              onClick={removeFromWatchlist}
             >
-              Remove from Cart
+              Remove from Watchlist
             </button>
           </p>
 
@@ -109,7 +109,7 @@ function Detail() {
         </div>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}
-      <WatchList />
+      <Watchlist />
     </>
   );
 }

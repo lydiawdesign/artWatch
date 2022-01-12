@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
-import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
+import { ADD_TO_WATCHLIST, UPDATE_WATCHLIST_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
 function ProductItem(item) {
@@ -16,26 +16,26 @@ function ProductItem(item) {
     quantity
   } = item;
 
-  const { cart } = state
+  const { watchlist } = state
 
-  const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-    if (itemInCart) {
+  const addToWatchlist = () => {
+    const itemInWatchlist = watchlist.find((watchlistItem) => watchlistItem._id === _id)
+    if (itemInWatchlist) {
       dispatch({
-        type: UPDATE_CART_QUANTITY,
+        type: UPDATE_WATCHLIST_QUANTITY,
         _id: _id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+        purchaseQuantity: parseInt(itemInWatchlist.purchaseQuantity) + 1
       });
-      idbPromise('cart', 'put', {
-        ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      idbPromise('watchlist', 'put', {
+        ...itemInWatchlist,
+        purchaseQuantity: parseInt(itemInWatchlist.purchaseQuantity) + 1
       });
     } else {
       dispatch({
-        type: ADD_TO_CART,
+        type: ADD_TO_WATCHLIST,
         product: { ...item, purchaseQuantity: 1 }
       });
-      idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+      idbPromise('watchlist', 'put', { ...item, purchaseQuantity: 1 });
     }
   }
 
@@ -52,7 +52,7 @@ function ProductItem(item) {
         <div>{quantity} {pluralize("item", quantity)} in stock</div>
         <span>${price}</span>
       </div>
-      <button onClick={addToCart}>Add to cart</button>
+      <button onClick={addToWatchlist}>Add to watchlist</button>
     </div>
   );
 }

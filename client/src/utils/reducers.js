@@ -1,14 +1,14 @@
 import { useReducer } from 'react';
 import {
   UPDATE_PRODUCTS,
-  ADD_TO_CART,
-  UPDATE_CART_QUANTITY,
-  REMOVE_FROM_CART,
-  ADD_MULTIPLE_TO_CART,
+  ADD_TO_WATCHLIST,
+  UPDATE_WATCHLIST_QUANTITY,
+  REMOVE_FROM_WATCHLIST,
+  ADD_MULTIPLE_TO_WATCHLIST,
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
-  CLEAR_CART,
-  TOGGLE_CART,
+  CLEAR_WATCHLIST,
+  TOGGLE_WATCHLIST,
 } from './actions';
 
 // The reducer is a function that accepts the current state and an action. It returns a new state based on that action.
@@ -21,24 +21,24 @@ export const reducer = (state, action) => {
         products: [...action.products],
       };
 
-    case ADD_TO_CART:
+    case ADD_TO_WATCHLIST:
       return {
         ...state,
-        cartOpen: true,
-        cart: [...state.cart, action.product],
+        watchlistOpen: true,
+        watchlist: [...state.watchlist, action.product],
       };
-    case ADD_MULTIPLE_TO_CART:
+    case ADD_MULTIPLE_TO_WATCHLIST:
       return {
         ...state,
-        cart: [...state.cart, ...action.products],
+        watchlist: [...state.watchlist, ...action.products],
       };
-    // Returns a copy of state, sets the cartOpen to true and maps through the items in the cart.
+    // Returns a copy of state, sets the watchlistOpen to true and maps through the items in the watchlist.
     // If the item's `id` matches the `id` that was provided in the action.payload, we update the purchase quantity.
-    case UPDATE_CART_QUANTITY:
+    case UPDATE_WATCHLIST_QUANTITY:
       return {
         ...state,
-        cartOpen: true,
-        cart: state.cart.map((product) => {
+        watchlistOpen: true,
+        watchlist: state.watchlist.map((product) => {
           if (action._id === product._id) {
             product.purchaseQuantity = action.purchaseQuantity;
           }
@@ -46,32 +46,32 @@ export const reducer = (state, action) => {
         }),
       };
 
-    // First we iterate through each item in the cart and check to see if the `product._id` matches the `action._id`
-    // If so, we remove it from our cart and set the updated state to a variable called `newState`
-    case REMOVE_FROM_CART:
-      let newState = state.cart.filter((product) => {
+    // First we iterate through each item in the watchlist and check to see if the `product._id` matches the `action._id`
+    // If so, we remove it from our watchlist and set the updated state to a variable called `newState`
+    case REMOVE_FROM_WATCHLIST:
+      let newState = state.watchlist.filter((product) => {
         return product._id !== action._id;
       });
 
-      // Then we return a copy of state and check to see if the cart is empty.
-      // If not, we set the cartOpen status to  `true`. Then we return an updated cart array set to the value of `newState`.
+      // Then we return a copy of state and check to see if the watchlist is empty.
+      // If not, we set the watchlistOpen status to  `true`. Then we return an updated watchlist array set to the value of `newState`.
       return {
         ...state,
-        cartOpen: newState.length > 0,
-        cart: newState,
+        watchlistOpen: newState.length > 0,
+        watchlist: newState,
       };
 
-    case CLEAR_CART:
+    case CLEAR_WATCHLIST:
       return {
         ...state,
-        cartOpen: false,
-        cart: [],
+        watchlistOpen: false,
+        watchlist: [],
       };
 
-    case TOGGLE_CART:
+    case TOGGLE_WATCHLIST:
       return {
         ...state,
-        cartOpen: !state.cartOpen,
+        watchlistOpen: !state.watchlistOpen,
       };
 
     case UPDATE_CATEGORIES:
