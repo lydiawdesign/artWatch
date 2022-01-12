@@ -64,7 +64,7 @@ const Watchlist = () => {
     return (
       <div className="watchlist-closed" onClick={toggleWatchlist}>
         <span role="img" aria-label="trash">
-          🛒
+        🧿
         </span>
       </div>
     );
@@ -94,9 +94,6 @@ const Watchlist = () => {
         </div>
       ) : (
         <h3>
-          <span role="img" aria-label="shocked">
-            😱
-          </span>
           You haven't added anything to your watchlist yet!
         </h3>
       )}
