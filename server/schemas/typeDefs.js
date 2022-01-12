@@ -13,6 +13,10 @@ const typeDefs = gql`
     image: String
     startBid: Float
     category: Category
+    price: Float
+    maxBidder: ID
+    expiration: Date
+    sold: Boolean
   }
 
   type Order {

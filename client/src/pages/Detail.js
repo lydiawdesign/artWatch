@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import Cart from '../components/Cart';
+import WatchList from '../components/WatchList';
 import { useStoreContext } from '../utils/GlobalState';
 import {
-  REMOVE_FROM_CART,
-  UPDATE_CART_QUANTITY,
-  ADD_TO_CART,
+  REMOVE_FROM_WATCHLIST,
+  UPDATE_WATCHLIST_QUANTITY,
+  ADD_TO_WATCHLIST,
   UPDATE_PRODUCTS,
 } from '../utils/actions';
 import { QUERY_PRODUCTS } from '../utils/queries';
@@ -22,7 +22,7 @@ function Detail() {
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const { products, cart } = state;
+  const { products, watchlist } = state;
 
   useEffect(() => {
     // already in global store
@@ -55,7 +55,7 @@ function Detail() {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
     if (itemInCart) {
       dispatch({
-        type: UPDATE_CART_QUANTITY,
+        type: UPDATE_WATCHLIST_QUANTITY,
         _id: id,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
       });
@@ -65,7 +65,7 @@ function Detail() {
       });
     } else {
       dispatch({
-        type: ADD_TO_CART,
+        type: ADD_TO_WATCHLIST,
         product: { ...currentProduct, purchaseQuantity: 1 },
       });
       idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
@@ -74,7 +74,7 @@ function Detail() {
 
   const removeFromCart = () => {
     dispatch({
-      type: REMOVE_FROM_CART,
+      type: REMOVE_FROM_WATCHLIST,
       _id: currentProduct._id,
     });
 
@@ -109,7 +109,7 @@ function Detail() {
         </div>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}
-      <Cart />
+      <WatchList />
     </>
   );
 }
