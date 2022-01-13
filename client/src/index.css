@@ -26,7 +26,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
-  color: var(--dark);
+  color: var(--primary);
 
 }
 
@@ -36,10 +36,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Righteous', cursive;
   font-weight: 500;
   margin: 5px 0;
-  line-height: 1.25;
+  line-height: 1.5;
 }
 
 h1 {
@@ -72,13 +72,29 @@ p {
 }
 
 a {
-  color: var(--tertiary);
+  color: white;
   text-decoration: none;
   font-weight: bold;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+/* logo header styling in nav */
+#artWatchStyle
+{
+  color: var(--secondary);
+  font-family: 'Righteous';
+}
+#artWatchStyle a
+{
+  color: white;
+  font-family: 'roboto';
+}
+
+ul{
+  list-style-type: none;
 }
 
 header {
