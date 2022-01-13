@@ -6,7 +6,6 @@ import Watchlist from '../components/Watchlist';
 import { useStoreContext } from '../utils/GlobalState';
 import {
   REMOVE_FROM_WATCHLIST,
-  UPDATE_WATCHLIST_QUANTITY,
   ADD_TO_WATCHLIST,
   UPDATE_PRODUCTS,
 } from '../utils/actions';
@@ -25,11 +24,9 @@ function Detail() {
   const { products, watchlist } = state;
 
   useEffect(() => {
-    // already in global store
     if (products.length) {
       setCurrentProduct(products.find((product) => product._id === id));
     }
-    // retrieved from server
     else if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
@@ -40,7 +37,6 @@ function Detail() {
         idbPromise('products', 'put', product);
       });
     }
-    // get cache from idb
     else if (!loading) {
       idbPromise('products', 'get').then((indexedProducts) => {
         dispatch({
@@ -54,21 +50,13 @@ function Detail() {
   const addToWatchlist = () => {
     const itemInWatchlist = watchlist.find((watchlistItem) => watchlistItem._id === id);
     if (itemInWatchlist) {
-      dispatch({
-        type: UPDATE_WATCHLIST_QUANTITY,
-        _id: id,
-        purchaseQuantity: parseInt(itemInWatchlist.purchaseQuantity) + 1,
-      });
-      idbPromise('watchlist', 'put', {
-        ...itemInWatchlist,
-        purchaseQuantity: parseInt(itemInWatchlist.purchaseQuantity) + 1,
-      });
+  
     } else {
       dispatch({
         type: ADD_TO_WATCHLIST,
-        product: { ...currentProduct, purchaseQuantity: 1 },
+        product: { ...currentProduct, },
       });
-      idbPromise('watchlist', 'put', { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise('watchlist', 'put', { ...currentProduct,  });
     }
   };
 
@@ -92,8 +80,11 @@ function Detail() {
           <p>{currentProduct.description}</p>
 
           <p>
-            <strong>Price:</strong>${currentProduct.price}{' '}
+            <strong>Starting Price:</strong>${currentProduct.price}{' '}
             <button onClick={addToWatchlist}>Add to Watchlist</button>
+            {/* need to add functionality of bidding */}
+            <button onClick={addToWatchlist}>Make a Bid</button>
+
             <button
               disabled={!watchlist.find((p) => p._id === currentProduct._id)}
               onClick={removeFromWatchlist}
