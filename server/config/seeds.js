@@ -5,11 +5,11 @@ db.once('open', async () => {
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
-    { name: 'Acrylic' },
-    { name: 'Mixed Media' },
-    { name: 'Watercolor' },
-    { name: 'Ink' },
-    { name: 'Other' }
+    { title: 'Acrylic' },
+    { title: 'Mixed Media' },
+    { title: 'Watercolor' },
+    { title: 'Ink' },
+    { title: 'Other' }
   ]);
 
   console.log('categories seeded');
@@ -26,7 +26,7 @@ db.once('open', async () => {
       startBid: 300
     },
     {
-      name: 'Azaman 2',
+      title: 'Azaman 2',
       description:
         '26in x 30in mixed media on framed canvas board',
       image: 'Azaman2.jpg',
@@ -34,7 +34,7 @@ db.once('open', async () => {
       startBid: 120
     },
     {
-      name: 'Faces of Morocco',
+      title: 'Faces of Morocco',
       category: categories[0]._id,
       description:
         '26in x 20in acrylic on stretched cotton canvas, 6 part mini series',
@@ -42,7 +42,7 @@ db.once('open', async () => {
       startBid: 400
     },
     {
-      name: 'Money & Maturity',
+      title: 'Money & Maturity',
       category: categories[4]._id,
       description:
         '8in x 10in collage on paper framed',
@@ -50,7 +50,7 @@ db.once('open', async () => {
       startBid: 40
     },
     {
-      name: 'Noodle Girl OG',
+      title: 'Noodle Girl OG',
       category: categories[0]._id,
       description:
         '8in x 10in acrylic on stretched canvas',
@@ -58,7 +58,7 @@ db.once('open', async () => {
       startBid: 40
     },
     {
-      name: 'Noodle Girls 1',
+      title: 'Noodle Girls 1',
       category: categories[0]._id,
       description:
         '20in x 30in acrylic on stretched canvas',
@@ -66,7 +66,7 @@ db.once('open', async () => {
       startBid: 100
     },
     {
-      name: 'Noodle Girls 2',
+      title: 'Noodle Girls 2',
       category: categories[0]._id,
       description:
         '26in x 20in acrylic on stretched canvas',
@@ -74,7 +74,7 @@ db.once('open', async () => {
       startBid: 100
     },
     {
-      name: 'Noodle Girls 3',
+      title: 'Noodle Girls 3',
       category: categories[3]._id,
       description:
         '8in x 10in alcohol ink on paper framed',
@@ -82,7 +82,7 @@ db.once('open', async () => {
       startBid: 40
     },
     {
-      name: 'Noodle Girls 4',
+      title: 'Noodle Girls 4',
       category: categories[3]._id,
       description: 
         '8in x 10in alcohol ink on paper framed',
@@ -90,7 +90,7 @@ db.once('open', async () => {
       startBid: 40
     },
     {
-      name: 'Noodle Girls 5',
+      title: 'Noodle Girls 5',
       category: categories[3]._id,
       description:
         '8in x 10in alcohol ink on paper framed',
@@ -98,7 +98,7 @@ db.once('open', async () => {
       startBid: 40
     },
     {
-      name: 'Noodle Girls 6',
+      title: 'Noodle Girls 6',
       category: categories[0]._id,
       description:
         '20in x 26in acrylic on framed stretched canvas',
@@ -106,7 +106,7 @@ db.once('open', async () => {
       startBid: 150
     },
     {
-      name: 'Noodle Girls 7',
+      title: 'Noodle Girls 7',
       category: categories[0]._id,
       description:
         '12in x 12in acrylic on stretched canvas',
@@ -114,7 +114,7 @@ db.once('open', async () => {
       startBid: 100
     },
     {
-      name: 'Noodle Girls 8',
+      title: 'Noodle Girls 8',
       category: categories[0]._id,
       description:
         '20in x 26in acrylic on framed stretched canvas',
@@ -122,7 +122,7 @@ db.once('open', async () => {
       startBid: 150
     },
     {
-      name: 'Noodle Heads',
+      title: 'Noodle Heads',
       category: categories[0]._id,
       description:
         '30in x 40in acrylic on stretched canvas',
@@ -130,7 +130,7 @@ db.once('open', async () => {
       startBid: 300
     },
     {
-      name: 'The Blue City 1',
+      title: 'The Blue City 1',
       category: categories[0]._id,
       description:
         'acrylic on framed stretched canvas',
@@ -138,7 +138,7 @@ db.once('open', async () => {
       startBid: 150
     },
     {
-      name: 'The Blue City 2',
+      title: 'The Blue City 2',
       category: categories[0]._id,
       description:
         'acrylic on framed stretched canvas',
@@ -146,7 +146,7 @@ db.once('open', async () => {
       startBid: 100
     },
     {
-      name: 'Of Two Minds 1',
+      title: 'Of Two Minds 1',
       category: categories[2]._id,
       description:
         '8in x 10in watercolor on paper',
@@ -154,7 +154,7 @@ db.once('open', async () => {
       startBid: 50
     },
     {
-      name: 'Of Two Minds 2',
+      title: 'Of Two Minds 2',
       category: categories[2]._id,
       description:
         '8in x 10in watercolor on paper',
@@ -168,21 +168,26 @@ db.once('open', async () => {
   await User.deleteMany();
 
   await User.create({
-    name: 'Lydia',
+    username: 'Lydia',
     email: 'lydia@gmail.com',
     password: 'password12345',
-    orders: [
-      {
-        products: [products[0]._id, products[0]._id, products[1]._id]
-      }
+    watchlist: [
+      { products: [products[0]._id, products[1]._id]}
     ]
   });
 
   await User.create({
-    name: 'Sheri',
-    email: 'Sheri@testmail.com',
+    username: 'Sheri',
+    email: 'Sheri@email.com',
     password: 'password12345'
   });
+
+  await User.create({
+    username: 'test',
+    email: 'test@email.com',
+    password: 'pass1234'
+  });
+
 
   console.log('users seeded');
 
