@@ -20,7 +20,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  watchlist: [productSchema],
+  watchlist: [String],
 });
 
 userSchema.pre('save', async function(next) {
