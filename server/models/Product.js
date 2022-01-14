@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
-  name: {
+  title: {
     type: String,
     required: true,
     trim: true
@@ -20,9 +20,7 @@ const productSchema = new Schema({
     min: 0.99
   },
   category: {
-    type: Schema.Types.ObjectId,
-    ref: 'Category',
-    required: true
+    type: String,
   }
 }, {timestamp: true});
 

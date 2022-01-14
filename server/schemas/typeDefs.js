@@ -8,7 +8,7 @@ const typeDefs = gql`
 
   type Product {
     _id: ID
-    name: String
+    title: String
     description: String
     image: String
     category: Category
@@ -17,13 +17,12 @@ const typeDefs = gql`
 
   type Watchlist {
     _id: ID
-    purchaseDate: String
     products: [Product]
   }
 
   type User {
     _id: ID
-    name: String
+    username: String
     email: String
     orders: [Order]
   }
