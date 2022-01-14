@@ -18,7 +18,7 @@ db.once('open', async () => {
 
   const products = await Product.insertMany([
     {
-      name: 'Azaman 1',
+      title: 'Azaman 1',
       description:
         '36in x 40in mixed media on framed canvas board',
       image: 'Azaman1.jpg',
