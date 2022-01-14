@@ -26,6 +26,8 @@ This is a MERN stack single page application that works with:
 * Deployed using Heroku
 
 ### Created By:
-Lydia Williamson  GitHub: https://github.com/lydiawdesign,  Devon Kuhn  GitHub: https://github.com/Devonkuhn,  
-Sheri Foster   GitHub: https://github.com/SFosR, Haley Witherell   GitHub: https://github.com/haleywitherell, 
-Michael Jenkins   GitHub: https://github.com/JenkinsMD
+Lydia Williamson  GitHub: https://github.com/lydiawdesign, <br> 
+Devon Kuhn  GitHub: https://github.com/Devonkuhn,  <br> 
+Sheri Foster   GitHub: https://github.com/SFosR, <br> 
+Haley Witherell   GitHub: https://github.com/haleywitherell, <br> 
+Michael Jenkins   GitHub: https://github.com/JenkinsMD <br> 
