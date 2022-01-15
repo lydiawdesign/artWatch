@@ -35,21 +35,23 @@ export const QUERY_ALL_PRODUCTS = gql`
 //Working
 export const QUERY_CATEGORY = gql`
   {
-    query categories ($category:String!) 
-    categories {
-      _id
-      title
-      description
-      startBid
-      category 
-      image
+    query categories ($category:String) {
+      categories(category:$category) {
+        _id
+        title
+        description
+        startBid
+        category 
+        image
+      }
+         
     }
-       
+    
     
   }
 `;
 
-//Working
+// Working
 export const QUERY_USER = gql`
   {
     user {
