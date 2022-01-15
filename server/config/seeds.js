@@ -1,5 +1,7 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { User, Product,  } = require('../models');
+import Azaman1 from "../../client/public/images/Azaman1.jpg"
+import Azaman2 from "../../client/public/images/Azaman2.jpg"
 
 db.once('open', async () => {
   // await Category.deleteMany();
@@ -21,7 +23,7 @@ db.once('open', async () => {
       title: 'Azaman 1',
       description:
         '36in x 40in mixed media on framed canvas board',
-      image: 'Azaman1.jpg',
+      image: Azaman1,
       category: "Oil",
       startBid: 300
     },
@@ -29,7 +31,7 @@ db.once('open', async () => {
       title: 'Azaman 2',
       description:
         '26in x 30in mixed media on framed canvas board',
-      image: 'Azaman2.jpg',
+      image: Azaman2,
       category: "Finger paint",
       startBid: 120
     },
