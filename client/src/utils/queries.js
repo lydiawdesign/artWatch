@@ -1,17 +1,17 @@
 import { gql } from '@apollo/client';
 
+
+//???
 export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
+  query getProducts($category: String) {
     products(category: $category) {
       _id
-      name
+      title
       description
-      price
-      quantity
+      starBid
       image
-      category {
-        _id
-      }
+      category 
+      
     }
   }
 `;
@@ -21,42 +21,47 @@ export const QUERY_ALL_PRODUCTS = gql`
   {
     products {
       _id
-      name
+      title
       description
-      price
-      quantity
-      category {
-        name
-      }
+      startBid
+      image
+      category 
+
+      
     }
   }
 `;
 
-export const QUERY_CATEGORIES = gql`
+//???
+export const QUERY_CATEGORY = gql`
   {
-    categories {
+    query products ($category:String!) 
+    products {
       _id
-      name
+      title
+      description
+      startBid
+      category 
+      image
     }
+       
+    
   }
 `;
 
 export const QUERY_USER = gql`
   {
     user {
-      name
-      orders {
+      username
+      products{
         _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
-      }
+        title
+        description
+        startBid
+        category 
+        image
+      } 
+
     }
   }
 `;

@@ -2,17 +2,17 @@ const db = require('./connection');
 const { User, Product, Category } = require('../models');
 
 db.once('open', async () => {
-  await Category.deleteMany();
+  // await Category.deleteMany();
 
-  const categories = await Category.insertMany([
-    { title: 'Acrylic' },
-    { title: 'Mixed Media' },
-    { title: 'Watercolor' },
-    { title: 'Ink' },
-    { title: 'Other' }
-  ]);
+  // const categories = await Category.insertMany([
+  //   { title: 'Acrylic' },
+  //   { title: 'Mixed Media' },
+  //   { title: 'Watercolor' },
+  //   { title: 'Ink' },
+  //   { title: 'Other' }
+  // ]);
 
-  console.log('categories seeded');
+  // console.log('categories seeded');
 
   await Product.deleteMany();
 
@@ -22,7 +22,7 @@ db.once('open', async () => {
       description:
         '36in x 40in mixed media on framed canvas board',
       image: 'Azaman1.jpg',
-      category: categories[1]._id,
+      category: "Oil",
       startBid: 300
     },
     {
@@ -30,12 +30,12 @@ db.once('open', async () => {
       description:
         '26in x 30in mixed media on framed canvas board',
       image: 'Azaman2.jpg',
-      category: categories[1]._id,
+      category: "Finger paint",
       startBid: 120
     },
     {
       title: 'Faces of Morocco',
-      category: categories[0]._id,
+      category: "Painting",
       description:
         '26in x 20in acrylic on stretched cotton canvas, 6 part mini series',
       image: 'FacesofMorocco.jpg',
@@ -43,7 +43,7 @@ db.once('open', async () => {
     },
     {
       title: 'Money & Maturity',
-      category: categories[4]._id,
+      category: "Oil",
       description:
         '8in x 10in collage on paper framed',
       image: 'MoneyMaturity.jpg',
@@ -51,7 +51,7 @@ db.once('open', async () => {
     },
     {
       title: 'Noodle Girl OG',
-      category: categories[0]._id,
+      category: "Clay",
       description:
         '8in x 10in acrylic on stretched canvas',
       image: 'NoodleGirlArms.jpg',
@@ -59,7 +59,7 @@ db.once('open', async () => {
     },
     {
       title: 'Noodle Girls 1',
-      category: categories[0]._id,
+      category: "Acrylic",
       description:
         '20in x 30in acrylic on stretched canvas',
       image: 'NoodleGirls1.jpg',
@@ -67,7 +67,7 @@ db.once('open', async () => {
     },
     {
       title: 'Noodle Girls 2',
-      category: categories[0]._id,
+      category: "Acrylic",
       description:
         '26in x 20in acrylic on stretched canvas',
       image: 'NoodleGirls2.jpg',
@@ -75,7 +75,7 @@ db.once('open', async () => {
     },
     {
       title: 'Noodle Girls 3',
-      category: categories[3]._id,
+      category: "Acrylic",
       description:
         '8in x 10in alcohol ink on paper framed',
       image: 'NoodleGirls3.jpg',
@@ -83,7 +83,7 @@ db.once('open', async () => {
     },
     {
       title: 'Noodle Girls 4',
-      category: categories[3]._id,
+      category: "Acrylic",
       description: 
         '8in x 10in alcohol ink on paper framed',
       image: 'NoodleGirls4.jpg',
@@ -91,7 +91,7 @@ db.once('open', async () => {
     },
     {
       title: 'Noodle Girls 5',
-      category: categories[3]._id,
+      category: "Oil",
       description:
         '8in x 10in alcohol ink on paper framed',
       image: 'NoodleGirls5.jpg',
@@ -99,7 +99,7 @@ db.once('open', async () => {
     },
     {
       title: 'Noodle Girls 6',
-      category: categories[0]._id,
+      category: "Oil",
       description:
         '20in x 26in acrylic on framed stretched canvas',
       image: 'NoodleGirls6.jpg',
@@ -107,7 +107,7 @@ db.once('open', async () => {
     },
     {
       title: 'Noodle Girls 7',
-      category: categories[0]._id,
+      category: "Oil",
       description:
         '12in x 12in acrylic on stretched canvas',
       image: 'NoodleGirls7.jpg',
@@ -115,7 +115,7 @@ db.once('open', async () => {
     },
     {
       title: 'Noodle Girls 8',
-      category: categories[0]._id,
+      category: "Oil",
       description:
         '20in x 26in acrylic on framed stretched canvas',
       image: 'NoodleGirls8.jpg',
@@ -123,7 +123,7 @@ db.once('open', async () => {
     },
     {
       title: 'Noodle Heads',
-      category: categories[0]._id,
+      category: "Oil",
       description:
         '30in x 40in acrylic on stretched canvas',
       image: 'NoodleHeadMosaics.jpg',
@@ -131,7 +131,7 @@ db.once('open', async () => {
     },
     {
       title: 'The Blue City 1',
-      category: categories[0]._id,
+      category: "Oil",
       description:
         'acrylic on framed stretched canvas',
       image: 'TheBlueCity.jpg',
@@ -139,7 +139,7 @@ db.once('open', async () => {
     },
     {
       title: 'The Blue City 2',
-      category: categories[0]._id,
+      category: "Mixed media",
       description:
         'acrylic on framed stretched canvas',
       image: 'TheBlueCity2.jpg',
@@ -147,7 +147,7 @@ db.once('open', async () => {
     },
     {
       title: 'Of Two Minds 1',
-      category: categories[2]._id,
+      category: "Mixed media",
       description:
         '8in x 10in watercolor on paper',
       image: 'OfTwoMinds1.jpg',
@@ -155,7 +155,7 @@ db.once('open', async () => {
     },
     {
       title: 'Of Two Minds 2',
-      category: categories[2]._id,
+      category: "Mixed media",
       description:
         '8in x 10in watercolor on paper',
       image: 'OfTwoMinds2.jpg',
@@ -172,7 +172,7 @@ db.once('open', async () => {
     email: 'lydia@gmail.com',
     password: 'password12345',
     watchlist: [
-      { products: [products[0]._id, products[1]._id]}
+      'Of Two Minds 2', 'The Blue City 1'
     ]
   });
 

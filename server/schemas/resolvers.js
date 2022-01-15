@@ -14,7 +14,16 @@ const resolvers = {
       return await Product.findById(_id)
     },
     user: async (parent, {_id}) => {
-      return await User.findById(_id)
+      const user = await User.findById(_id)
+      const products = await Product.find({
+        title: {
+          $in:user.watchlist
+        }
+
+      })
+      user.watchlist=products;
+      console.log("--user",user)
+      return user;
     }
   },
   Mutation: {

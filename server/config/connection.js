@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-// do not push with this URI 
+// Enable access to .env variables
+// require('dotenv').config();
+ 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/artWatch', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
