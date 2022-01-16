@@ -30,6 +30,10 @@ body {
 
 }
 
+.navbar-color {
+  background: var(--primary);
+}
+
 h1,
 h2,
 h3,
