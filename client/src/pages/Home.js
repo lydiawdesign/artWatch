@@ -8,7 +8,6 @@ const Home = () => {
     <div className="container">
       <ProductList/>
       {/* <CategoryMenu /> */}
-      {/* <ProductList /> */}
       {/* <Watchlist /> */}
     </div>
   );
