@@ -1,30 +1,63 @@
-import React from 'react'
-// import '../App.css';
-import Azaman1 from '../../testImage/Azaman1.jpg';
+
+import React, { useEffect } from 'react';
+import { QUERY_PRODUCTS } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
+import Product from '../Product';
+import { useDispatch, useSelector } from 'react-redux';
+import { idbPromis } from '../../utils/helpers';
 
 
 
-export const ProductList = () => {
-    return (
-        <div className="container p-5">
-            <h1 className='text-center pt-5'>View our Gallery:</h1>
 
-           <div className="card-group">
+function Watchlist() {
+    const state = useSelector(state => state);
+    const dispatch = useDispatch();
 
-                <div className="card g-3 p-2">
-                    <img src={Azaman1} className="card-img-top" alt="Azaman"/>
-                        <div className="card-body card text-center">
-                        <h5 className="card-title">Azaman 1</h5>
-                        <p className="card-text"> this is also a description.</p>
-                        <p className="card-text"> start bid is $300</p>
-                        <a href="gallery" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">Go Back to Gallery</a>
-                        <a href="watchlist" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">Add to Watchlist</a>
-                    </div>
-                </div>
-                
-            </div>
+    const { loading, data } = useQuery(QUERY_PRODUCTS);
+
+    useEffect(() => {
+        if (data) {
+          dispatch({
+            type: UPDATE_PRODUCTS,
+            products: data.products,
+          });
+          data.products.forEach((product) => {
+            idbPromise('products', 'put', product);
+          });
+        } else if (!loading) {
+          idbPromise('products', 'get').then((products) => {
+            dispatch({
+              type: UPDATE_PRODUCTS,
+              products: products,
+            });
+          });
+        }
+      }, [data, loading, dispatch]);
+
+
+return (
+    <div className="my-2">
+      <h2>Your Art:</h2>
+      {state.products.length ? (
+        <div className="flex-row">
+          {filterProducts().map((product) => (
+            <Product
+              _id={product._id}
+              title={product.title}
+              image={product.image}
+              startBid={product.startBid}
+              
+            />
+          ))}
         </div>
-    );
+      ) : (
+        <h3>You haven't bid on any art!</h3>
+      )}
+    
+    </div>
+  );
 }
 
-export default ProductList;
+export default Watchlist;
+
+
