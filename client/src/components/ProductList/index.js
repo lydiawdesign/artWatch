@@ -17,7 +17,7 @@ export const ProductList = () => {
                         <h5 className="card-title">Azaman 1</h5>
                         <p className="card-text">this is a short description for the art. </p>
                         <p className="card-text"> start bid is $300</p>
-                        <a href="gallery" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">Go Back to Gallery</a>
+                        <a href="gallery" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">View Product</a>
                         <a href="watchlist" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">Add to Watchlist</a>
                     </div>
                 </div>
@@ -28,7 +28,7 @@ export const ProductList = () => {
                         <h5 className="card-title">Azaman 1</h5>
                         <p className="card-text">this is a short description for the art. </p>
                         <p className="card-text"> start bid is $300</p>
-                        <a href="gallery" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">Go Back to Gallery</a>
+                        <a href="gallery" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">View Product</a>
                         <a href="watchlist" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">Add to Watchlist</a>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ export const ProductList = () => {
                         <h5 className="card-title">Azaman 1</h5>
                         <p className="card-text"> this is also a description.</p>
                         <p className="card-text"> start bid is $300</p>
-                        <a href="gallery" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">Go Back to Gallery</a>
+                        <a href="gallery" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">View Product</a>
                         <a href="watchlist" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">Add to Watchlist</a>
                     </div>
                 </div>
