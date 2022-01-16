@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
@@ -58,3 +59,5 @@ return (
 }
 
 export default Watchlist;
+
+
