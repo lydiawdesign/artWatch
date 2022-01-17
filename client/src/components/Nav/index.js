@@ -1,10 +1,6 @@
 import React from 'react';
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-// import $ from 'jquery';
-
-
-// document.querySelector(".navbar-toggler").addEventListener("click", function(e){ document.querySelector("#navbarSupportedContent").classList.toggle("show"); });
 
 const Navbar = () => {
     function showNavigation() {
