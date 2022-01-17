@@ -1,7 +1,11 @@
 import React from 'react'
 // import '../App.css';
+
 import Azaman1 from '../../testImage/Azaman1.jpg';
 
+
+
+export default Product;
 
 
 export const ProductList = () => {
