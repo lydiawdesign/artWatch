@@ -2,6 +2,34 @@ const db = require('./connection');
 const { User, Product,  } = require('../models');
 import Azaman1 from "../../client/public/images/Azaman1.jpg"
 import Azaman2 from "../../client/public/images/Azaman2.jpg"
+import FacesofMorocco from "../../client/public/images/FacesofMorocco.jpg"
+import MoneyMaturity from "../../client/public/images/MoneyMaturity.jpg"
+import NoodleGirlArms from "../../client/public/images/NoodleGirlArms.jpg"
+import NoodleGirls1 from "../../client/public/images/NoodleGirls1.jpg"
+import NoodleGirls2 from "../../client/public/images/NoodleGirls2.jpg"
+import NoodleGirls3 from "../../client/public/images/NoodleGirls3.jpg"
+import NoodleGirls4 from "../../client/public/images/NoodleGirls4.jpg"
+import NoodleGirls5 from "../../client/public/images/NoodleGirls5.jpg"
+import NoodleGirls6 from "../../client/public/images/NoodleGirls6.jpg"
+import NoodleGirls7 from "../../client/public/images/NoodleGirls7.jpg"
+import NoodleGirls8 from "../../client/public/images/NoodleGirls8.jpg"
+import NoodleHeadMosaics from "../../client/public/images/NoodleHeadMosaics.jpg"
+import OfTwoMinds1 from "../../client/public/images/OfTwoMinds1.jpg"
+import OfTwoMinds2 from "../../client/public/images/OfTwoMinds2.jpg"
+import TheBlueCity from "../../client/public/images/TheBlueCity.jpg"
+import TheBlueCity2 from "../../client/public/images/TheBlueCity2.jpg"
+
+
+
+
+
+
+
+
+
+
+
+
 
 db.once('open', async () => {
   // await Category.deleteMany();
@@ -40,7 +68,7 @@ db.once('open', async () => {
       category: "Painting",
       description:
         '26in x 20in acrylic on stretched cotton canvas, 6 part mini series',
-      image: 'FacesofMorocco.jpg',
+      image: FacesofMorocco,
       startBid: 400
     },
     {
@@ -48,7 +76,7 @@ db.once('open', async () => {
       category: "Oil",
       description:
         '8in x 10in collage on paper framed',
-      image: 'MoneyMaturity.jpg',
+      image: MoneyMaturity,
       startBid: 40
     },
     {
@@ -56,7 +84,7 @@ db.once('open', async () => {
       category: "Clay",
       description:
         '8in x 10in acrylic on stretched canvas',
-      image: 'NoodleGirlArms.jpg',
+      image: NoodleGirlArms,
       startBid: 40
     },
     {
@@ -64,7 +92,7 @@ db.once('open', async () => {
       category: "Acrylic",
       description:
         '20in x 30in acrylic on stretched canvas',
-      image: 'NoodleGirls1.jpg',
+      image: NoodleGirls1,
       startBid: 100
     },
     {
@@ -72,7 +100,7 @@ db.once('open', async () => {
       category: "Acrylic",
       description:
         '26in x 20in acrylic on stretched canvas',
-      image: 'NoodleGirls2.jpg',
+      image: NoodleGirls2,
       startBid: 100
     },
     {
@@ -80,7 +108,7 @@ db.once('open', async () => {
       category: "Acrylic",
       description:
         '8in x 10in alcohol ink on paper framed',
-      image: 'NoodleGirls3.jpg',
+      image: NoodleGirls3,
       startBid: 40
     },
     {
@@ -88,7 +116,7 @@ db.once('open', async () => {
       category: "Acrylic",
       description: 
         '8in x 10in alcohol ink on paper framed',
-      image: 'NoodleGirls4.jpg',
+      image: NoodleGirls4,
       startBid: 40
     },
     {
@@ -96,7 +124,7 @@ db.once('open', async () => {
       category: "Oil",
       description:
         '8in x 10in alcohol ink on paper framed',
-      image: 'NoodleGirls5.jpg',
+      image: NoodleGirls5,
       startBid: 40
     },
     {
@@ -104,7 +132,7 @@ db.once('open', async () => {
       category: "Oil",
       description:
         '20in x 26in acrylic on framed stretched canvas',
-      image: 'NoodleGirls6.jpg',
+      image: NoodleGirls6,
       startBid: 150
     },
     {
@@ -112,7 +140,7 @@ db.once('open', async () => {
       category: "Oil",
       description:
         '12in x 12in acrylic on stretched canvas',
-      image: 'NoodleGirls7.jpg',
+      image: NoodleGirls7,
       startBid: 100
     },
     {
@@ -120,7 +148,7 @@ db.once('open', async () => {
       category: "Oil",
       description:
         '20in x 26in acrylic on framed stretched canvas',
-      image: 'NoodleGirls8.jpg',
+      image: NoodleGirls8,
       startBid: 150
     },
     {
@@ -128,7 +156,7 @@ db.once('open', async () => {
       category: "Oil",
       description:
         '30in x 40in acrylic on stretched canvas',
-      image: 'NoodleHeadMosaics.jpg',
+      image: NoodleHeadMosaics,
       startBid: 300
     },
     {
@@ -136,7 +164,7 @@ db.once('open', async () => {
       category: "Oil",
       description:
         'acrylic on framed stretched canvas',
-      image: 'TheBlueCity.jpg',
+      image: TheBlueCity,
       startBid: 150
     },
     {
@@ -144,7 +172,7 @@ db.once('open', async () => {
       category: "Mixed media",
       description:
         'acrylic on framed stretched canvas',
-      image: 'TheBlueCity2.jpg',
+      image: TheBlueCity2,
       startBid: 100
     },
     {
@@ -152,7 +180,7 @@ db.once('open', async () => {
       category: "Mixed media",
       description:
         '8in x 10in watercolor on paper',
-      image: 'OfTwoMinds1.jpg',
+      image: OfTwoMinds1,
       startBid: 50
     },
     {
@@ -160,7 +188,7 @@ db.once('open', async () => {
       category: "Mixed media",
       description:
         '8in x 10in watercolor on paper',
-      image: 'OfTwoMinds2.jpg',
+      image: OfTwoMinds2,
       startBid: 50
     }
   ]);
