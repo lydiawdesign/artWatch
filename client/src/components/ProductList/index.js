@@ -43,6 +43,7 @@ export const ProductList = () => {
                     <div className="card-group">
                         <div className='row row-col-2 justify-content-center border-lg-dark py-2 align-items-center'>
 
+
                             {products.map(product => (
                                 <div className="card col-3 m-3 shadow p-3" key={product._id}>
                                     <img src={`/images/${product.image}`} className="card-img-top" alt="Artwork"/>
@@ -66,6 +67,8 @@ export const ProductList = () => {
                 </div>   
             </div>
         </div>
+
+
     );
 }
 
