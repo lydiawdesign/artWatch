@@ -1,63 +1,41 @@
-
-import React, { useEffect } from 'react';
-import { QUERY_PRODUCTS } from '../../utils/queries';
+import React from 'react';
+// import '../App.css';
+import Azaman1 from '../../testImage/Azaman1.jpg';
 import { useQuery } from '@apollo/client';
-import Product from '../Product';
-import { useDispatch, useSelector } from 'react-redux';
-import { idbPromis } from '../../utils/helpers';
+import { QUERY_USER } from '../../utils/queries';
 
 
 
+export const WatchList = () => {
+    const {loading, data, error} = useQuery(QUERY_USER);
+    console.log("--data",data)
+    console.log(JSON.stringify(error,null,2))
+    const products = data?.user.watchlist || []; 
+    console.log("---",products);
+    return (
+      
+        <div className="container p-5">
+            <h1 className='text-center pt-5'>Watchlist:</h1>
 
-function Watchlist() {
-    const state = useSelector(state => state);
-    const dispatch = useDispatch();
+           <div className="card-group">
 
-    const { loading, data } = useQuery(QUERY_PRODUCTS);
+               {products.map(product => (
+                   <div className="card col-3" key={product._id}>
+                   <img src={`/images/${product.image}`} className="card-img-top" alt="Artwork"/>
+                   <div className="card-body card text-center">
+                       <h5 className="card-title">{product.title}</h5>
+                       <p className="card-text">{product.description} </p>
+                       <p className="card-text"> {product.startBid}</p>
+                       <a href="gallery" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">View Product</a>
+                       <a href="watchlist" className="btn btn-outline-dark m-2 buttonStyle" target='_blank' rel="noreferrer">Add to Watchlist</a>
+                   </div>
+               </div>
+               ) )}
 
-    useEffect(() => {
-        if (data) {
-          dispatch({
-            type: UPDATE_PRODUCTS,
-            products: data.products,
-          });
-          data.products.forEach((product) => {
-            idbPromise('products', 'put', product);
-          });
-        } else if (!loading) {
-          idbPromise('products', 'get').then((products) => {
-            dispatch({
-              type: UPDATE_PRODUCTS,
-              products: products,
-            });
-          });
-        }
-      }, [data, loading, dispatch]);
-
-
-return (
-    <div className="my-2">
-      <h2>Your Art:</h2>
-      {state.products.length ? (
-        <div className="flex-row">
-          {filterProducts().map((product) => (
-            <Product
-              _id={product._id}
-              title={product.title}
-              image={product.image}
-              startBid={product.startBid}
-              
-            />
-          ))}
-        </div>
-      ) : (
-        <h3>You haven't bid on any art!</h3>
-      )}
-    
-    </div>
-  );
+                
+           </div>
+         </div>
+    );
 }
 
-export default Watchlist;
-
-
+export default WatchList;

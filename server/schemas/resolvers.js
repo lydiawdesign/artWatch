@@ -16,17 +16,22 @@ const resolvers = {
     product: async (parent, { _id }) => {
       return await Product.findById(_id)
     },
-    user: async (parent, {_id}) => {
-      const user = await User.findById(_id)
-      const products = await Product.find({
-        title: {
-          $in:user.watchlist
-        }
-
-      })
-      user.watchlist=products;
-      console.log("--user",user)
-      return user;
+    user: async (parent, args, context) => {
+      if(context.user){
+        const user = await User.findById(context.user._id)
+        const watchlist = await Product.find({
+          _id: {
+            $in:user.watchlist
+          }
+  
+        })
+        // user.watchlist=products;
+        console.log("--user",user)
+        const result = {...user, watchlist};
+        console.log(result)
+        return result
+      }
+     throw new AuthenticationError("Not Logged In")
     }
   },
   Mutation: {
