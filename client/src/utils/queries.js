@@ -55,8 +55,9 @@ export const QUERY_ALL_PRODUCTS = gql`
 export const QUERY_USER = gql`
   {
     user {
+      _id
       username
-      products{
+      watchlist{
         _id
         title
         description

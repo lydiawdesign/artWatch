@@ -16,7 +16,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    watchlist: [String]
+    watchlist: [Product]
   }
 
   type Auth {
@@ -28,7 +28,7 @@ const typeDefs = gql`
     categories(category:String): [Product]
     products: [Product]
     product(_id: ID!): Product
-    user(_id: ID!): User
+    user: User
   }
 
   type Mutation {
