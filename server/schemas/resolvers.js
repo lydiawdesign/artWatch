@@ -10,12 +10,15 @@ const resolvers = {
       }
       return await Product.find();
     },
+
     products: async () => {
       return await Product.find();
     },
+
     product: async (parent, { _id }) => {
       return await Product.findById(_id)
     },
+
     user: async (parent, args, context) => {
       if(context.user){
         const user = await User.findById(context.user._id)
@@ -23,7 +26,6 @@ const resolvers = {
           _id: {
             $in:user.watchlist
           }
-  
         })
         // user.watchlist=products;
         console.log("--user",user)
@@ -39,12 +41,14 @@ const resolvers = {
       const product = Product.create(args);
       return product;
     },
+
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
+
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
@@ -52,6 +56,7 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -68,7 +73,19 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    }
+    },
+    
+    addToWatchlist: async (parent, { productId }, context) => {
+      if (context.user) {
+        const updatedWatchlist = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { watchlist: productId}},
+          { new: true },
+        );
+        return updatedWatchlist;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   }
 };
 

@@ -26,7 +26,6 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            
           );
         } else {
           return (
@@ -49,19 +48,15 @@ const Navbar = () => {
                         </ul>
                 </div>
             </div>
-            
           );
-        }
-      }
+        };
+    };
+        return (
+        <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <Link to="/" className="navbar-brand mx-5" id="artWatchStyle">art<a>Watch</a></Link>
+        {showNavigation()}
+        </nav>
+      )
+};
 
-      return (
-          <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-            <Link to="/" className="navbar-brand mx-5" id="artWatchStyle">art<a>Watch</a></Link>
-            {showNavigation()}
-          </nav>
-        
-      );
-
-
-}
 export default Navbar;
