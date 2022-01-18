@@ -1,13 +1,10 @@
 import React from "react";
-import Watchlist from "../components/Watchlist";
-// import CategoryMenu from "../components/CategoryMenu";
-// import Watchlist from "../components/Watchlist";
+import Watchlist from "../components/WatchList";
 
 const WatchlistPage = () => {
   return (
     <div className="container">
       <Watchlist/>
-    
     </div>
   );
 };

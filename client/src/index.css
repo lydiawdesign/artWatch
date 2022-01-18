@@ -65,6 +65,7 @@ header a {
   background-color: var(--secondary)!important;
 }
 
+
 .card {
   display: flex;
   flex-direction: column;
@@ -87,3 +88,4 @@ header a {
 .flexible {
   flex-grow: 1;
 }
+

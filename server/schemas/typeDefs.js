@@ -36,6 +36,7 @@ const typeDefs = gql`
     updateUser(_id: ID, username: String, email: String, password: String, watchlist:[String]): User
     createProduct(title: String, description: String, image: String, startBid: Float, category: String ): Product
     login(email: String!, password: String!): Auth
+    addToWatchlist (productId: ID!): User
   }
 `;
 

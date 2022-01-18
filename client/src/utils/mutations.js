@@ -11,7 +11,6 @@ export const LOGIN = gql`
   }
 `;
 
-
 export const ADD_USER = gql`
   mutation addUser(
     $username: String!
@@ -26,6 +25,24 @@ export const ADD_USER = gql`
       token
       user {
         _id
+      }
+    }
+  }
+`;
+
+export const ADD_TO_WATCHLIST = gql`
+  mutation addToWatchlist($productId: ID!) {
+    addToWatchlist(productId: $productId) {
+      _id
+      username
+      email
+      watchlist {
+        _id
+        title
+        description
+        startBid
+        category 
+        image
       }
     }
   }

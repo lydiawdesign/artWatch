@@ -1,7 +1,5 @@
 import { gql } from '@apollo/client';
 
-
-
 export const QUERY_PRODUCTS = gql`
   query getProducts($category: String) {
     products(category: $category) {
@@ -11,25 +9,21 @@ export const QUERY_PRODUCTS = gql`
       starBid
       image
       category 
-      
     }
   }
 `;
 
-
 export const QUERY_ALL_PRODUCTS = gql`
-  
-     {
-      products{
-        _id
-        title
-        description
-        image
-        startBid
-        category
-      }
+    {
+    products{
+      _id
+      title
+      description
+      image
+      startBid
+      category
     }
-  
+  }
 `;
 
 //Working
@@ -65,7 +59,6 @@ export const QUERY_USER = gql`
         category 
         image
       } 
-
     }
   }
 `;
