@@ -19,12 +19,12 @@ export const ProductList = () => {
             <div className='card_wrap--outer'>
                 <div className='card__wrap--inner'>
                     <div className="card-group">
-                        <div className='row row-col-2 justify-content-center border-sm py-2 align-items-center'>
+                        <div className='row row-col-2 justify-content-center border-lg-dark py-2 align-items-center'>
 
                {products.map(product => (
-                   <div className="card col-3 m-3" key={product._id}>
+                   <div className="card col-3 m-3 shadow p-3" key={product._id}>
                    <img src={`/images/${product.image}`} className="card-img-top" alt="Artwork"/>
-                   <div className="card-body card text-center">
+                   <div className="card-body card text-center border-dark">
                        <h5 className="card-title">{product.title}</h5>
                        <p className="flexible" className="card-text">{product.description} </p>
                        <p className="card-text"> {product.startBid}</p>
