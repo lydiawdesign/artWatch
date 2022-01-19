@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import Watchlist from "./pages/Watchlist";
+import Product from './components/Product';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -45,6 +46,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/Watchlist" component={Watchlist} /> 
+            <Route exact path="/Product/:_id" component={Product} /> 
           </Switch>
         </div>
       </Router>

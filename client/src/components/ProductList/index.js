@@ -4,6 +4,7 @@ import { QUERY_ALL_PRODUCTS} from '../../utils/queries';
 import { ADD_TO_WATCHLIST } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { Button } from 'react-bootstrap';
+
   
 
 export const ProductList = () => {
@@ -52,7 +53,7 @@ export const ProductList = () => {
                                         <p className="flexible card-text">{product.description} </p>
                                         <p className="card-text"> Category: {product.category}</p>
                                         <p className="card-text"> Starting Bid: {product.startBid}</p>
-                                        <a href="/Product" className="btn btn-outline-dark m-2 buttonStyle">View Product</a>
+                                        <a href={`/Product/${product._id}`} className="btn btn-outline-dark m-2 buttonStyle">View Product</a>
                                         {Auth.loggedIn() && ( 
                                             <Button 
                                                 className="btn btn-outline-dark m-2 buttonStyle" 
