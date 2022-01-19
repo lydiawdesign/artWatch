@@ -4,7 +4,7 @@ This site allows artists and/or gallerists to showcase original work for sale di
 
 ## Find It At
 
-* Presentation: 
+* Presentation: https://docs.google.com/presentation/d/1D_FpXByX3N9O-ONa_Dv6Ir6Rl1qPKHJNhTiM8IznnZg/edit?usp=sharing
  
 * Live Link: https://therealartwatch.herokuapp.com/
 
@@ -19,6 +19,7 @@ I WANT to buy the best art for the cheapest prices online by bidding
 SO THAT I can support a virtual art gallery and artists. 
 
 ## Screenshots
+
 
 ## Technologies Used
 
