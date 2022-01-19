@@ -37,6 +37,7 @@ const typeDefs = gql`
     createProduct(title: String, description: String, image: String, startBid: Float, category: String ): Product
     login(email: String!, password: String!): Auth
     addToWatchlist (productId: ID!): User
+    removeFromWatchlist (productId: ID!): User
   }
 `;
 
