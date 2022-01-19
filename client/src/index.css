@@ -1,0 +1,91 @@
+:root {
+  --primary: #283d3b;
+  --secondary: #9ef01a;
+  --tertiary: #197278;
+  --light: #fafafa;
+  --dark: #272f32;
+  --accent-font: 'Righteous', cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Righteous', cursive;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* logo header styling in nav */
+#artWatchStyle
+{
+  color: var(--secondary);
+  font-family: 'Righteous';
+}
+#artWatchStyle a
+{
+  color: white;
+  font-family: 'roboto';
+}
+
+ul{
+  list-style-type: none;
+}
+
+header {
+  background: var(--primary);
+}
+
+header a {
+  color: var(--light);
+}
+
+.buttonStyle {
+  background-color: var(--secondary)!important;
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card__wrap-outer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.card__wrap-inner {
+  display: flex;
+  flex-direction: row;
+  width: 33.33%;
+}
+
+.flexible {
+  flex-grow: 1;
+}
+
