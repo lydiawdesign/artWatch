@@ -5,7 +5,6 @@ import { ADD_TO_WATCHLIST } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { Button } from 'react-bootstrap';
   
-
 export const ProductList = () => {
     const {loading, data} = useQuery(QUERY_ALL_PRODUCTS);
     console.log("***",data)
@@ -13,9 +12,8 @@ export const ProductList = () => {
     const products = data?.products || []; 
     console.log("---",products);
 
-    const [addToWatchlist, {error }] = useMutation(ADD_TO_WATCHLIST);
+    const [addToWatchlist, { error }] = useMutation(ADD_TO_WATCHLIST);
     
-
     const handleAddToWatchlist = async (productId) => {
         console.log("product id", productId);
         const token = Auth.loggedIn() ? Auth.getToken() : null;

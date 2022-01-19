@@ -86,6 +86,18 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    removeFromWatchlist: async (parent, { productId }, context) => {
+      if (context.user) {
+        const updatedWatchlist = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { watchlist: productId}},
+          { new: true },
+        );
+        return updatedWatchlist;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   }
 };
 

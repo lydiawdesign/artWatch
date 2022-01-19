@@ -47,3 +47,21 @@ export const ADD_TO_WATCHLIST = gql`
     }
   }
 `;
+
+export const REMOVE_FROM_WATCHLIST = gql`
+  mutation removeFromWatchlist($productId: ID!) {
+    removeFromWatchlist(productId: $productId) {
+      _id
+      username
+      email
+      watchlist {
+        _id
+        title
+        description
+        startBid
+        category 
+        image
+      }
+    }
+  }
+`;
