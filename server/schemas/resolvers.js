@@ -15,7 +15,7 @@ const resolvers = {
       return await Product.find();
     },
 
-    product: async (parent, { _id }) => {
+    getProduct: async (parent, { _id }) => {
       return await Product.findById(_id)
     },
 
